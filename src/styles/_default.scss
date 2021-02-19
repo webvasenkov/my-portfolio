@@ -1,0 +1,92 @@
+@import './variables';
+
+:root {
+  font-size: calc(0.45em + 1vw);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.125rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background: $primary-color;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.thin {
+  font-size: inherit;
+  font-weight: 100;
+  opacity: 0.7;
+}
+
+.red-button {
+  display: block;
+  background: $accent-color;
+  padding: 0.75em 1.5em;
+  width: max-content;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 300;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.app {
+  overflow-x: hidden;
+}
+
+.footer {
+  &__social-networks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5em;
+  }
+
+  &__social-network {
+    padding: 0 1em;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}

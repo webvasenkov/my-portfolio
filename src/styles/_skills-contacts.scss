@@ -1,0 +1,115 @@
+@import './variables';
+
+.skills-contacts {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 0;
+  }
+
+  &__description {
+    text-align: center;
+    margin-top: 0.5em;
+    opacity: 0.7;
+  }
+
+  &__form {
+    margin-top: 2.5em;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  &__form-top,
+  &__form-bottom {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__form-bottom {
+    justify-content: flex-end;
+
+    &--success {
+      justify-content: space-between;
+    }
+  }
+
+  &__form-element {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.2em;
+    display: flex;
+    flex-direction: column;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      width: 0;
+      height: 1px;
+      left: 0;
+      transition: all 0.3s ease-out;
+      background: #fff;
+    }
+
+    &:focus-within {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  &__form-element:first-child {
+    margin-right: 1em;
+  }
+
+  &__form-input,
+  &__form-textarea {
+    padding: 1.2em 1.2em;
+    outline: none;
+    border: none;
+    background: rgba($color: #fff, $alpha: 0.1);
+    width: 100%;
+    color: inherit;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    transition: all 0.3s ease-out;
+    &--error {
+      box-shadow: 0px 1px 1px $accent-color;
+    }
+  }
+
+  &__form-textarea {
+    resize: none;
+    height: 15em;
+  }
+
+  &__button {
+    align-self: flex-end;
+  }
+
+  &__message {
+    display: flex;
+    align-items: center;
+  }
+
+  &__message-icon {
+    margin-right: 0.5em;
+    width: 1em;
+    fill: $accent-color;
+  }
+
+  &__error-message {
+    transition: all 0.3s ease-out;
+    color: rgba($color: #fff, $alpha: 0.7);
+    font-size: 0.65rem;
+    position: absolute;
+    display: block;
+    align-items: center;
+    right: 0.6em;
+    bottom: 0.6em;
+    z-index: -1;
+  }
+}
