@@ -1,2 +1,21 @@
 $primary-color: #171717;
 $accent-color: #ff3434;
+
+@mixin underline($selector) {
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    left: 0;
+    transition: all 0.3s ease-out;
+    background: #fff;
+  }
+
+  &:#{$selector} {
+    &::before {
+      width: 100%;
+    }
+  }
+}

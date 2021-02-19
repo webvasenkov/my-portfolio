@@ -42,23 +42,7 @@
     margin-bottom: 1.2em;
     display: flex;
     flex-direction: column;
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      width: 0;
-      height: 1px;
-      left: 0;
-      transition: all 0.3s ease-out;
-      background: #fff;
-    }
-
-    &:focus-within {
-      &::before {
-        width: 100%;
-      }
-    }
+    @include underline(focus-within);
   }
 
   &__form-element:first-child {

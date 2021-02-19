@@ -1,3 +1,5 @@
+@import './variables';
+
 .logo {
   width: 1.3em;
 }
@@ -5,6 +7,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1.5em 0;
 }
 
@@ -14,8 +17,10 @@
   }
 
   &__item {
+    position: relative;
     margin-left: 3.125em;
     cursor: pointer;
+    @include underline(hover);
   }
 }
 
@@ -27,11 +32,15 @@
     margin-top: 3em;
   }
 
+  &__about-wrapper {
+  }
+
   &__title {
     line-height: 1;
   }
 
   &__description {
+    height: 1em;
     margin-top: 1.7em;
     opacity: 0.7;
   }
