@@ -10,7 +10,11 @@ const SkillsContacts = ({ skills }) => {
         </h2>
         <p className='skills-contacts__description'>My core skills and contacts</p>
         <ul className='skills-contacts__skills'>
-          <li className='skills-contacts__skill'></li>
+          {skills.map((skill) => (
+            <li className='skills-contacts__skill' key={skill.id}>
+              {skill.name}
+            </li>
+          ))}
         </ul>
         <Form />
       </div>

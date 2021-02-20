@@ -1,31 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Link } from 'react-scroll';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import { ReactComponent as BigShoesTorso } from '../assets/big-shoes-torso.svg';
+import { typeWriterEffect } from '../util';
 
-const Hero = () => {
-  const [about, setAbout] = useState(['t1', 't2']);
+const Hero = memo(() => {
   const [description, setDescription] = useState('');
+  const [about, setAbout] = useState([
+    `I'm a beginner web developer`,
+    `I live in Belarus`,
+    `I'm 21 years old`,
+    'You can see my portfolio or say hi.',
+  ]);
+  const [animationLine, setAnimationLine] = useState({ animationDuration: '0s', display: 'block' });
 
-  const delay = (ms = 150) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(resolve, ms);
-    });
-  };
-
-  const typeWriterEffect = async () => {
-    for (let i = 0; i < about.length; i++) {
-      setDescription('');
-      for (let j = 0; j < (!i ? about[i].length + 1 : about[i].length); j++) {
-        await delay();
-        setDescription((descriptionPrev) => {
-          return descriptionPrev + about[i][j];
-        });
-      }
-    }
-  };
-
-  useEffect(() => typeWriterEffect(), []);
+  useEffect(() => {
+    typeWriterEffect(about, setDescription, setAnimationLine);
+  }, [about]);
 
   return (
     <section className='hero'>
@@ -51,15 +42,18 @@ const Hero = () => {
           <h1 className='hero__title'>
             Hi <br /> my name <span className='thin'>is</span> Denis
           </h1>
-          <p className='hero__description'>{description}</p>
+          <div className='hero__description-wrapper'>
+            <p className='hero__description'>{description}</p>
+            <span className='hero__description-line' style={animationLine} />
+          </div>
           <Link className='hero__button red-button' to='portfolio' smooth>
             View Portfolio
           </Link>
+          <BigShoesTorso className='hero__big-shoes-torso' />
         </div>
-        <BigShoesTorso className='hero__big-shoes-torso' />
       </div>
     </section>
   );
-};
+});
 
 export default Hero;

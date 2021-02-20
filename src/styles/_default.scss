@@ -2,12 +2,17 @@
 
 :root {
   font-size: calc(0.45em + 1vw);
+
+  @media (max-width: 768px) {
+    font-size: calc(0.65em + 1vw);
+  }
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 h1 {
