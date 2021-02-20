@@ -1,3 +1,5 @@
+@import './variables';
+
 .portfolio {
   min-height: 100vh;
 
@@ -21,12 +23,15 @@
   &__slider {
     margin-top: 2.5em;
     width: 100%;
+    position: relative;
+    height: 50vh;
   }
 
   &__slide {
-    height: 50vh;
-    position: relative;
+    height: inherit;
+    position: absolute;
     overflow: hidden;
+    top: 0;
 
     &:hover {
       .portfolio__slide-img {
@@ -49,10 +54,18 @@
     margin-top: 0.5em;
     display: flex;
     flex-wrap: wrap;
+    position: absolute;
   }
 
   &__slide-tool {
     margin-right: 0.5em;
+  }
+
+  &__slide-link {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    @include underline(hover);
   }
 
   &__slide-img {
@@ -67,6 +80,10 @@
     margin-top: 1em;
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    transition: translateY(-100%);
   }
   &__control-slides {
     display: flex;

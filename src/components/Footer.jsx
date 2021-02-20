@@ -1,10 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTelegram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { useScrollAnimation } from './useScrollAnimation';
+import { motion } from 'framer-motion';
+import { zoom } from '../animation';
 
 const Footer = () => {
+  const [element, controls] = useScrollAnimation();
+
   return (
-    <footer className='footer'>
+    <motion.footer className='footer' ref={element} variants={zoom} animate={controls}>
       <ul className='footer__social-networks'>
         <li className='footer__social-network'>
           <a className='footer__social-network-link' href='https://t.me/webvasenkov' target='_blank' rel='noreferrer'>
@@ -32,7 +37,7 @@ const Footer = () => {
           </a>
         </li>
       </ul>
-    </footer>
+    </motion.footer>
   );
 };
 
