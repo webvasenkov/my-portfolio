@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
 import { ReactComponent as ArrowRight } from '../assets/arrow-right.svg';
+import { useScrollAnimation } from './useScrollAnimation';
+import { motion } from 'framer-motion';
+import { zoom } from '../animation';
+import { wrap } from 'popmotion';
 
 const Portfolio = ({ slides }) => {
+  const [element, controls] = useScrollAnimation();
   const [currentSlide, setCurrentSlide] = useState(slides[0]);
   const currentId = slides.indexOf(currentSlide);
 
@@ -18,8 +23,10 @@ const Portfolio = ({ slides }) => {
     }
   };
 
+  console.log('');
+
   return (
-    <section id='portfolio' className='portfolio'>
+    <motion.section id='portfolio' className='portfolio' ref={element} variants={zoom} animate={controls}>
       <div className='portfolio__container container'>
         <h2 className='portfolio__title'>Portfolio</h2>
         <p className='portfolio__description'>My last works</p>
@@ -57,7 +64,7 @@ const Portfolio = ({ slides }) => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

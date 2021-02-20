@@ -1,9 +1,14 @@
 import React from 'react';
 import Form from './Form';
+import { motion } from 'framer-motion';
+import { zoom } from '../animation';
+import { useScrollAnimation } from './useScrollAnimation';
 
 const SkillsContacts = ({ skills }) => {
+  const [element, controls] = useScrollAnimation();
+
   return (
-    <section id='skills-contacts' className='skills-contacts'>
+    <motion.section id='skills-contacts' className='skills-contacts' ref={element} variants={zoom} animate={controls}>
       <div className='skills-contacts__container container'>
         <h2 className='skills-contacts__title'>
           Skills<span className='thin'>&</span>Contacts
@@ -18,7 +23,7 @@ const SkillsContacts = ({ skills }) => {
         </ul>
         <Form />
       </div>
-    </section>
+    </motion.section>
   );
 };
 

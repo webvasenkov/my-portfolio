@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { data } from './data';
-import './styles/main.scss';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
 import SkillsContacts from './components/SkillsContacts';

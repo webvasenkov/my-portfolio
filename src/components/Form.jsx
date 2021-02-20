@@ -15,8 +15,10 @@ const schema = yup.object().shape({
 
 const Form = () => {
   const [isSent, setIsSent] = useState(false);
-  const stylesInput = (name) => {
-    return classNames('skills-contacts__form-input', { 'skills-contacts__form-input--error': errors[name]?.message });
+  const stylesElement = (name) => {
+    return classNames('skills-contacts__form-element', {
+      'skills-contacts__form-element--error': errors[name]?.message,
+    });
   };
   const errorMessage = (name) => {
     return <span className='skills-contacts__error-message'>{errors[name]?.message}</span>;
@@ -49,24 +51,28 @@ const Form = () => {
   return (
     <form className='skills-contacts__form' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
       <div className='skills-contacts__form-top'>
-        <div className='skills-contacts__form-element'>
-          <input className={stylesInput('name')} name='name' type='text' placeholder='Name' ref={register} />
+        <div className={stylesElement('name')}>
+          <input className='skills-contacts__form-input' name='name' type='text' placeholder='Name' ref={register} />
           {errors.name && errorMessage('name')}
         </div>
-        <div className='skills-contacts__form-element'>
-          <input className={stylesInput('email')} name='email' type='text' placeholder='Email' ref={register} />
+        <div className={stylesElement('email')}>
+          <input className='skills-contacts__form-input' name='email' type='text' placeholder='Email' ref={register} />
           {errors.email && errorMessage('email')}
         </div>
       </div>
-      <div className='skills-contacts__form-element'>
-        <input className={stylesInput('subject')} name='subject' type='text' placeholder='Subject' ref={register} />
+      <div className={stylesElement('subject')}>
+        <input
+          className='skills-contacts__form-input'
+          name='subject'
+          type='text'
+          placeholder='Subject'
+          ref={register}
+        />
         {errors.subject && errorMessage('subject')}
       </div>
-      <div className='skills-contacts__form-element'>
+      <div className={stylesElement('message')}>
         <textarea
-          className={classNames('skills-contacts__form-textarea', {
-            'skills-contacts__form-textarea--error': errors.message?.message,
-          })}
+          className='skills-contacts__form-textarea'
           name='message'
           type='text'
           placeholder='Message'

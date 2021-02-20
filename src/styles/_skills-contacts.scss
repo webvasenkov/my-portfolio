@@ -24,7 +24,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 50%;
+    max-width: 65%;
 
     @media (max-width: 992px) {
       max-width: 100%;
@@ -67,6 +67,17 @@
     display: flex;
     flex-direction: column;
     @include underline(focus-within);
+    &--error {
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        left: 0;
+        background: $accent-color;
+        animation: appearance 0.3s ease-out forwards;
+      }
+    }
   }
 
   &__form-element:first-child {
@@ -84,9 +95,6 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
     transition: all 0.3s ease-out;
-    &--error {
-      box-shadow: 0px 1px 1px $accent-color;
-    }
   }
 
   &__form-textarea {
@@ -119,5 +127,15 @@
     right: 0.6em;
     bottom: 0.6em;
     z-index: -1;
+  }
+}
+
+@keyframes appearance {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
   }
 }

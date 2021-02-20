@@ -3,8 +3,12 @@ import { Link } from 'react-scroll';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import { ReactComponent as BigShoesTorso } from '../assets/big-shoes-torso.svg';
 import { typeWriterEffect } from '../util';
+import { motion } from 'framer-motion';
+import { appearance } from '../animation';
+import { useScrollAnimation } from './useScrollAnimation';
 
 const Hero = memo(() => {
+  const [element, controls] = useScrollAnimation();
   const [description, setDescription] = useState('');
   const [about, setAbout] = useState([
     `I'm a beginner web developer`,
@@ -19,7 +23,7 @@ const Hero = memo(() => {
   }, [about]);
 
   return (
-    <section className='hero'>
+    <motion.section className='hero' {...appearance}>
       <div className='container'>
         <header className='header'>
           <Logo className='logo' />
@@ -52,7 +56,7 @@ const Hero = memo(() => {
           <BigShoesTorso className='hero__big-shoes-torso' />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 });
 
