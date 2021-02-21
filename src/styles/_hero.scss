@@ -29,9 +29,13 @@
   @media (max-width: 1024px) and (max-height: 1366px) {
     min-height: auto;
   }
+
   &__about {
     position: relative;
     padding: 2.5em 0;
+    @media (max-width: 1024px) and (max-height: 1366px) {
+      padding: 7.5em 0;
+    }
   }
 
   &__title {
@@ -70,6 +74,7 @@
     @media (max-width: 1024px) and (max-height: 1366px) {
       bottom: 0em;
       top: auto;
+      width: 65%;
     }
   }
 }

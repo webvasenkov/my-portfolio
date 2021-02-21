@@ -45,7 +45,6 @@ const Portfolio = ({ slides }) => {
               dragElastic={1}
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
-
                 if (swipe < -swipeConfidenceThreshold) {
                   paginate(1);
                 } else if (swipe > swipeConfidenceThreshold) {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { ReactComponent as Heart } from '../assets/heart.svg';
 import { ReactComponent as Error } from '../assets/error.svg';
 import { useForm } from 'react-hook-form';
@@ -16,11 +16,22 @@ const schema = yup.object().shape({
   message: yup.string().required(),
 });
 
-const Form = () => {
-  const [messageText, setMessageText] = useState('');
-  const [errorText, setErrorText] = useState('');
+const Message = ({ text, isSuccesses }) => {
+  return (
+    <motion.span className='skills-contacts__message' initial={{ y: -20 }} animate={{ y: 0 }}>
+      {isSuccesses ? (
+        <Heart className='skills-contacts__message-icon' />
+      ) : (
+        <Error className='skills-contacts__message-icon' />
+      )}
+      {text}
+    </motion.span>
+  );
+};
 
-  const refForm = useRef();
+const Form = () => {
+  const [message, setMessage] = useState({ text: '', isSuccesses: true });
+
   const stylesElement = (name) => {
     return classNames('skills-contacts__form-element', {
       'skills-contacts__form-element--error': errors[name]?.message,
@@ -31,17 +42,17 @@ const Form = () => {
     return <span className='skills-contacts__error-message'>{errors[name]?.message}</span>;
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, event) => {
     try {
-      await emailjs.sendForm('webvasenkov', 'contact_form', refForm.current, process.env.REACT_APP_USER_ID);
-      refForm.current.reset();
-      setMessageText(`Hi ${data.name}, I will reply shortly`);
+      await emailjs.sendForm('webvasenkov', 'contact_form', event.target, process.env.REACT_APP_USER_ID);
+      event.target.reset();
+      setMessage({ ...message, text: `Hi ${data.name}, I will reply shortly` });
       await delay(3000);
-      setMessageText('');
+      setMessage({ ...message, text: '' });
     } catch (error) {
-      setErrorText('Something went wrong :(');
+      setMessage({ ...message, text: 'Something went wrong :(', isSuccesses: false });
       await delay(3000);
-      setErrorText('');
+      setMessage({ ...message, text: '' });
     }
   };
 
@@ -50,7 +61,7 @@ const Form = () => {
   });
 
   return (
-    <form className='skills-contacts__form' onSubmit={handleSubmit(onSubmit)} ref={refForm}>
+    <form className='skills-contacts__form' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
       <div className='skills-contacts__form-top'>
         <div className={stylesElement('name')}>
           <input className='skills-contacts__form-input' name='name' type='text' placeholder='Name' ref={register} />
@@ -83,21 +94,10 @@ const Form = () => {
       </div>
       <div
         className={classNames('skills-contacts__form-bottom', {
-          'skills-contacts__form-bottom--success': messageText || errorText,
+          'skills-contacts__form-bottom--success': message.text,
         })}
       >
-        {messageText && (
-          <motion.span className='skills-contacts__message' initial={{ y: -20 }} animate={{ y: 0 }}>
-            <Heart className='skills-contacts__message-icon' />
-            {messageText}
-          </motion.span>
-        )}
-        {errorText && (
-          <motion.span className='skills-contacts__message' initial={{ y: -20 }} animate={{ y: 0 }}>
-            <Error className='skills-contacts__message-icon' />
-            {errorText}
-          </motion.span>
-        )}
+        {message.text && <Message text={message.text} isSuccesses={message.isSuccesses} />}
         <button className='skills-contacts__button red-button' type='submit' value='Send'>
           Say Hello
         </button>
