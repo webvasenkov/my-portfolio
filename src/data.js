@@ -3,9 +3,17 @@ import photographerPortfolio from './assets/photographer-portfolio.png';
 import musicPlayer from './assets/music-player.png';
 import eCommerce from './assets/e-commerce.png';
 import greatestPizza from './assets/greatest-pizza.png';
+import gamesBase from './assets/games-base.png';
 
 export const data = {
   portfolio: [
+    {
+      id: v4(),
+      name: 'Games Base',
+      img: gamesBase,
+      link: 'https://games-base-webvasenkov.netlify.app',
+      tools: ['React', 'Redux', 'Framer', 'Styled Components'],
+    },
     {
       id: v4(),
       name: 'Photographer Portfolio',
