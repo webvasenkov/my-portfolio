@@ -52,7 +52,7 @@ const Form = () => {
     } catch (error) {
       event.target.reset();
       setMessage({ ...message, text: 'Something went wrong :(', isSuccesses: false });
-      await delay(3000);
+      await delay(3100);
       setMessage({ ...message, text: '' });
     }
   };
