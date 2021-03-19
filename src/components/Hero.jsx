@@ -47,7 +47,7 @@ const Hero = memo(() => {
             <p className='hero__description'>{description}</p>
             <span className='hero__description-line' style={animationLine} />
           </div>
-          <Link className='hero__button red-button' to='portfolio' smooth>
+          <Link type='button' className='hero__button red-button' to='portfolio' smooth>
             View Portfolio
           </Link>
           <BigShoesTorso className='hero__big-shoes-torso' />
