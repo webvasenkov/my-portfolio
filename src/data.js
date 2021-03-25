@@ -1,14 +1,14 @@
 import { v4 } from 'uuid';
 import photographerPortfolio from './assets/photographer-portfolio.png';
-import photographerPortfolioLazy from './assets/photographer-portfolio-lazy.jpg';
+import photographerPortfolioLazy from './assets/photographer-portfolio-lazy.png';
 import musicPlayer from './assets/music-player.png';
-import musicPlayerLazy from './assets/music-player-lazy.jpg';
+import musicPlayerLazy from './assets/music-player-lazy.png';
 import eCommerce from './assets/e-commerce.png';
-import eCommerceLazy from './assets/e-commerce-lazy.jpg';
+import eCommerceLazy from './assets/e-commerce-lazy.png';
 import greatestPizza from './assets/greatest-pizza.png';
-import greatestPizzaLazy from './assets/greatest-pizza-lazy.jpg';
+import greatestPizzaLazy from './assets/greatest-pizza-lazy.png';
 import gamesBase from './assets/games-base.png';
-import gamesBaseLazy from './assets/games-base-lazy.jpg';
+import gamesBaseLazy from './assets/games-base-lazy.png';
 
 export const data = {
   portfolio: [
