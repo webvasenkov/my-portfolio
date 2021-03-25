@@ -19,6 +19,10 @@ const Hero = memo(() => {
     typeWriterEffect(about, setDescription, setAnimationLine);
   }, [about]);
 
+  const handleClick = () => {
+    document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className='hero' {...appearance}>
       <div className='container'>
@@ -47,9 +51,9 @@ const Hero = memo(() => {
             <p className='hero__description'>{description}</p>
             <span className='hero__description-line' style={animationLine} />
           </div>
-          <Link type='button' className='hero__button red-button' to='portfolio' smooth>
+          <button className='hero__button red-button' onClick={handleClick}>
             View Portfolio
-          </Link>
+          </button>
           <BigShoesTorso className='hero__big-shoes-torso' />
         </div>
       </div>

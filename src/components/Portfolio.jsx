@@ -21,6 +21,11 @@ const Portfolio = ({ slides }) => {
     setPage([page + newDirection, newDirection]);
   };
 
+  const handleLazyLoad = (e) => {
+    e.target.src = e.target.dataset.src;
+    e.target.classList.remove('portfolio__slide-img--lazy');
+  };
+
   return (
     <motion.section id='portfolio' className='portfolio' ref={element} variants={appearance} animate={controls}>
       <div className='portfolio__container container'>
@@ -52,7 +57,13 @@ const Portfolio = ({ slides }) => {
                 }
               }}
             >
-              <motion.img className='portfolio__slide-img' src={slides[slideIndex].img} />
+              <motion.img
+                className='portfolio__slide-img portfolio__slide-img--lazy'
+                src={slides[slideIndex].lazy}
+                data-src={slides[slideIndex].img}
+                onLoad={handleLazyLoad}
+              />
+
               <div className='portfolio__slide-overlay'>
                 <h3 className='portfolio__slide-title'>{slides[slideIndex].name}</h3>
                 <ul className='portfolio__slide-tools'>
