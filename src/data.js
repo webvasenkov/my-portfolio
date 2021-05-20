@@ -9,9 +9,19 @@ import greatestPizza from './assets/greatest-pizza.png';
 import greatestPizzaLazy from './assets/greatest-pizza-lazy.png';
 import gamesBase from './assets/games-base.png';
 import gamesBaseLazy from './assets/games-base-lazy.png';
+import checkRepos from './assets/check-repos.png';
+import checkReposLazy from './assets/check-repos-lazy.png';
 
 export const data = {
   portfolio: [
+    {
+      id: v4(),
+      name: 'Check Repos',
+      img: checkRepos,
+      lazy: checkReposLazy,
+      link: 'https://check-repos.vercel.app',
+      tools: ['React', 'Redux', 'Sass'],
+    },
     {
       id: v4(),
       name: 'Games Base',
